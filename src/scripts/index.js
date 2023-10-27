@@ -216,6 +216,7 @@ const snakeControls = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    updateHighscore();
     sortScoreBoard();
     creditsButton();
     setDifficultySpeed();
