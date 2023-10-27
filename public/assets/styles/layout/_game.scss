@@ -67,6 +67,7 @@ section.game {
 
         .hotkeys {
             display: grid;
+            text-transform: uppercase;
             grid-template-columns: 1fr 1fr 1fr;
             grid-gap: 5px;
             width: fit-content;

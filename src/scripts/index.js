@@ -8,6 +8,13 @@ const pauseButton = () => {
         pause.classList.toggle("hidden");
         clearInterval(config.gameLoop);
     })
+/* 
+    window.addEventListener('keydown', (event) => {
+        if(event.key == 'Escape') {
+            pause.classList.toggle("hidden");
+            clearInterval(config.gameLoop);
+        }
+    }) */
 }
 
 const difficultyButton = () => {
@@ -115,7 +122,7 @@ const changeOptions = () => {
                 down: "s",
                 left: "q",
                 right: "d"
-            }
+            };
         }
 
         if(keyboard == 'QWERTY') {
@@ -124,8 +131,14 @@ const changeOptions = () => {
                 down: "s",
                 left: "a",
                 right: "d"
-            }
+            };
         }
+
+        document.querySelector('.hotkeys .up-key').innerText = config.movementKeys.up
+        document.querySelector('.hotkeys .down-key').innerText = config.movementKeys.down
+        document.querySelector('.hotkeys .left-key').innerText = config.movementKeys.left
+        document.querySelector('.hotkeys .right-key').innerText = config.movementKeys.right
+
         const snakeColor = document.querySelector('#snake-color').value;
         localStorage.setItem("snake-color", snakeColor);
         snake.color = localStorage.getItem("snake-color");
