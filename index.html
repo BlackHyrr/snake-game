@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./public/assets/styles/style.css">
+    <link rel="shortcut icon" href="./public/assets/media/favicon.ico" type="image/x-icon">
+    <script src="./src/scripts/index.js" type="module"></script>
+    <link rel="stylesheet" href="snake.css">
+</head>
+
+<body>
+    <div class="pause-window hidden">
+        <div class="pause-menu">
+            <p>PAUSED</p>
+            <div class="btn-container">
+                <div class="btn orange-btn resume-btn">
+                    <span>RESUME</span>
+                </div>
+                <div class="btn blue-btn restart-btn">
+                    <span>RESTART</span>
+                </div>
+                <div class="btn blue-btn quit-btn">
+                    <span>QUIT</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-menu">
+        <div class="window">
+            <div class="main-headline">
+                <p>SNAKE GAME</p>
+            </div>
+            <div class="menu-content">
+                <div class="btn orange-btn" id="start-button">
+                    <span>START</span>
+                </div>
+                <div class="btn blue-btn difficulty-btn" id="difficulty">
+                    <span>DIFFICULTY</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="difficulty-popup hidden">
+                    <div class="dif-setting">
+                        <span id="dif-easy" data-difficulty="1">Easy</span>
+                        <p>
+                            <i class="fa-solid fa-star"></i>
+                        </p>
+                    </div>
+                    <div class="dif-setting">
+                        <span id="dif-normal" data-difficulty="1.25">Normal</span>
+                        <p>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </p>
+                    </div>
+                    <div class="dif-setting">
+                        <span id="dif-hard" data-difficulty="1.5">Hard</span>
+                        <p>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </p>
+                    </div>
+                    <div class="dif-setting">
+                        <span id="dif-veryhard" data-difficulty="2">Very Hard</span>
+                        <p>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </p>
+                    </div>
+                    <div class="dif-setting">
+                        <span id="dif-nightmare"  data-difficulty="3">Nightmare</span>
+                        <p>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </p>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <div class="btn square-btn login-btn">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Login</span>
+                    </div>
+                    <div class="btn square-btn options-btn">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Options</span>
+                    </div>
+                    <div class="btn square-btn highscores-btn">
+                        <i class="fa-solid fa-ranking-star"></i>
+                        <span>Scores</span>
+                    </div>
+                    <div class="login-popup hidden">
+                        <p>Coming soon!</p>
+                    </div>
+                    <div class="options-popup hidden">
+                        <form>
+                            <div class="form-row">
+                                <label for="keyboard">Controls</label>
+                                <select name="keyboard" id="keyboard">
+                                    <option value="QWERTY">QWERTY</option>
+                                    <option value="AZERTY">AZERTY</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <label for="snake-color">Snake color</label>
+                                <input type="color" name="snake-color" id="snake-color" value="#009E00">
+                            </div>
+                            <div class="form-row">
+                                <button type="submit" class="btn btn-validate options-valid-btn">OK</button>
+                                <button class="btn btn-cancel options-cancel-btn">CANCEL</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="btn blue-btn credits-btn">
+                    <span>CREDITS</span>
+                </div>
+                <div class=".credits-popup hidden">
+
+                </div>
+                <img class="snake-image" src="public/assets/media/snake_640.png" alt="Illustration of a green snake">
+            </div>
+            <div class="highscore-board window hidden">
+                <div class="headline">
+                    <p>Highscore</p>
+                </div>
+                <div class="inner-window" id="high-score">
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">139</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">21</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">30</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">140</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">70</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">25</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">5</p>
+                    </div>
+                    <div class="user" id="player">
+                        <p class="user-pseudo">You</p>
+                        <p class="user-score">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <section class="game hidden" id="game-section">
+            <div class="instructions window">
+                <div class="headline">
+                    <p>Instructions</p>
+                </div>
+                <div class="inner-window">
+                    <p>How to move the snake</p>
+                    <div class="hotkeys">
+                        <div></div>
+                        <div class="key">Z</div>
+                        <div></div>
+                        <div class="key">Q</div>
+                        <div class="key">S</div>
+                        <div class="key">D</div>
+                    </div>
+                    <p>You can pause the game by hitting the escape key or clicking the pause button</p>
+                    <div class="hotkeys">
+                        <div class="key">
+                            <span>Esc</span>
+                        </div>
+                        <div class="key pause-key">
+                            <div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                            </div>
+                            <i class="fa-solid fa-computer-mouse"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-window window">
+                <div class="headline">
+                    <div class="headline-content">
+                        <div class="current-score">
+                            <span>Score</span>
+                            <span id="score-value">0</span>
+                        </div>
+                        <div class="current-difficulty">
+                            <span>Difficulty</span>
+                            <div class="stars">
+                                <div class="stars-container"></div>
+                            </div>
+                        </div>
+                        <div class="pause-btn">
+                            <div>
+                                <div class="white-bar"></div>
+                                <div class="white-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-window">
+                    <div class="game-window">
+                        <canvas id="board">
+
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="scoreboard window">
+                <div class="headline">
+                    <p>Scoreboard</p>
+                </div>
+                <div class="inner-window" id="high-score">
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">139</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">21</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">30</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">140</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">70</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">25</p>
+                    </div>
+                    <div class="user">
+                        <p class="user-pseudo">Théo</p>
+                        <p class="user-score">5</p>
+                    </div>
+                    <div class="user" id="player">
+                        <p class="user-pseudo" data-user="player">You</p>
+                        <p class="user-score" data-score="0">0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
