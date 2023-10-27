@@ -1,4 +1,4 @@
-import { gameUpdate, newGame, sortScoreBoard, updateHighscore } from "./game.js"
+import { gameUpdate, newGame, sortHighscoreBoard, sortScoreBoard, updateHighscore } from "./game.js"
 import { config, snake } from "./variables.js";
 
 const pauseButton = () => {
@@ -216,7 +216,7 @@ const snakeControls = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    updateHighscore();
+    sortHighscoreBoard();
     sortScoreBoard();
     creditsButton();
     setDifficultySpeed();
