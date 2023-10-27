@@ -168,6 +168,10 @@ const creditsButton = () => {
     creditsBtn.addEventListener('click', () => {
         popup.classList.toggle("hidden");
     })
+    const closeBtn = document.querySelector(".credits-popup .close-btn");
+    closeBtn.addEventListener('click', () => {
+        popup.classList.toggle("hidden");
+    })
 }
 
 const startButton = () => {
@@ -213,6 +217,7 @@ const snakeControls = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     sortScoreBoard();
+    creditsButton();
     setDifficultySpeed();
     startButton();
     difficultyButton();

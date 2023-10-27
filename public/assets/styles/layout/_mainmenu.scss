@@ -138,6 +138,8 @@
         background: radial-gradient(156.25% 701.25% at 33.18% 11.25%, #2898ff 0%, #4e8df7 100%);
         box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.4);
         border-radius: 30px;
+        width: 100%;
+        height: 100%;
         padding: 10px;
         position: absolute;
         z-index: 11;
@@ -145,8 +147,30 @@
         left: 50%;
         transform: translateX(-50%);
         color: white;
+        display: flex;
+        flex-direction: column;
+        .close-btn {
+            margin: auto auto 0 auto;
+        }
     }
     
+    .credits-content {
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+        font-weight: 500;
+        font-family: 'inter', 'sans-serif';
+
+        p {
+            margin-bottom: 20px;
+        }
+        a {
+            color: #ff7a00;
+            font-weight: 600;
+        }
+    }
+
+
     .options-popup {
         background: radial-gradient(156.25% 701.25% at 33.18% 11.25%, #2898ff 0%, #4e8df7 100%);
         box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.4);
