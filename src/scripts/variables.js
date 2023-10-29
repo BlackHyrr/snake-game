@@ -29,11 +29,11 @@ let config = {
     MAX_BOARD_WIDTH: 850,
     MAX_BOARD_HEIGHT: 550,
     difficultyChoices: {
-        easy: 1,
-        normal: 1.25,
-        hard: 1.5,
-        very_hard: 2,
-        nightmare: 3
+        easy: 1.3,
+        normal: 1.75,
+        hard: 2.4,
+        very_hard: 3.5,
+        nightmare: 6
     },
     gameInterval: 500,
     currentDifficulty: 1,
